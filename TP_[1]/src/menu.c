@@ -13,7 +13,7 @@ int menu(){
 	int opciones;
 
 		do{
-			printf("\tOpciones \n");
+			printf("\tOpciones\n");
 			printf("\n");
 			printf("1. Ingresar Kilómetros\n");
 			printf("2. Ingresar Precios de Vuelos\n");
@@ -22,7 +22,7 @@ int menu(){
 			printf("5. Carga Forzada de Datos\n");
 			printf("6. Salir\n");
 
-			printf("Ingrese una opción: ");
+			printf("\nIngrese una opción: ");
 			scanf("%d", &opciones);
 			printf("\n");
 
