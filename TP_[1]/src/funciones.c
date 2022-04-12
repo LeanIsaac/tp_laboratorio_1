@@ -19,3 +19,10 @@ void validar(int a){
 		printf("ERROR NO HAY DATOS CARGADOS\n");
 	}
 }
+
+float ingreseKms(){
+	float kms;
+		printf("Ingresar kilómetros: ");
+		scanf("%f", &kms);
+	return kms;
+}

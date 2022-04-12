@@ -23,6 +23,12 @@ void validar(int);
  */
 void validar2(int ,int);
 
+/**
+ * @brief pide que igresemos los kms, y lo retorna
+ *
+ * @return retorna los kolometros ingresador
+ */
+float ingreseKms();
 
 #endif /* FUNCIONES_H_ */
 
