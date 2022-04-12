@@ -22,7 +22,7 @@ int menu(){
 			printf("5. Carga Forzada de Datos\n");
 			printf("6. Salir\n");
 
-			printf("\nIngrese una opción: ");
+			printf("Ingrese una opción: ");
 			scanf("%d", &opciones);
 			printf("\n");
 
