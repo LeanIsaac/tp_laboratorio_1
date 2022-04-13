@@ -10,6 +10,8 @@
 #include "menu.h"
 #include "funciones.h"
 
+float bitcoin(float);
+
 int main(){
 	setbuf(stdout,NULL);
 
@@ -18,8 +20,12 @@ int main(){
 	float precioLatam = 0;
 	int opciones;
 
-	/*float debitoAA, creditoAA, btcAA, precioUni;
-	float debitoL, creditoL, btcL, precioUni;*/
+	float debitoAA;
+	float creditoAA;
+	float debitoLatam;
+	float creditoLatam;
+	float btcAA;
+	float btcLatam;
 
 	do{
 		opciones = menu();
@@ -44,12 +50,39 @@ int main(){
 
 			case 3: //Calcular todos los costos
 				validar2(precioAerolineas, precioLatam);
-				printf("Calculando...\n[Presione 4, para mostrar resultados]\n");
+				printf("Calculando...\n");
+				debitoAA =  calcularCostos(precioAerolineas, -0.1);
+				creditoAA = calcularCostos(precioAerolineas, 0.25);
+				btcAA = bitcoin(precioAerolineas);
+
+				debitoLatam = calcularCostos(precioLatam, -0.1);
+				creditoLatam = calcularCostos(precioLatam, 0.25);
+				btcLatam = bitcoin(precioLatam);
+
+
+
+				/*
+				 * a) Tarjeta de débito (descuento 10%) x
+				 * b) Tarjeta de crédito (interés 25%) x
+				 * c) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos) x
+				 * d) Mostrar precio por km (precio unitario)
+				 * e) Mostrar diferencia de precio ingresada (Latam - Aerolíneas)
+				 */
 				opciones = menu();
+
 				break;
 
 			case 4: //Informar Resultados
-				//opciones = menu();
+				printf("══> AEROLINEAS <══\n");
+				printf("a) Precio con tarjeta de débito: %.2f\n",debitoAA);
+				printf("b) Precio con tarjeta de crédito: %.2f\n",creditoAA);
+				printf("c) Precio pagando con bitcoin : %f BTC\n",btcAA);
+
+				printf("\n══> LATAM <══\n");
+				printf("a) Precio con tarjeta de débito: %.2f\n",debitoLatam);
+				printf("b) Precio con tarjeta de crédito: %.2f\n",creditoLatam);
+				printf("c) Precio pagando con bitcoin : %f BTC\n",btcLatam);
+				opciones = menu();
 				break;
 
 			case 5: //Carga forzada de datos
@@ -59,7 +92,7 @@ int main(){
 				break;
 
 			case 6: //Salir del menú
-				printf("MUCHAS GRACIAS");
+				printf("MUCHAS GRACIAS!!");
 				break;
 		}
 	}while(opciones != 6);
@@ -67,7 +100,14 @@ int main(){
 	return 0;
 }
 
+float bitcoin(float costo){
+	float total;
+	float btc = 4606954.55;
 
+	total = costo/btc;
+
+	return total;
+}
 
 
 

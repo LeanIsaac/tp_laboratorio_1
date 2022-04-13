@@ -13,7 +13,7 @@ int menu(){
 	int opciones;
 
 		do{
-			printf("\tOpciones\n");
+			printf("\n════>> OPCIONES <<════\n");
 			printf("\n");
 			printf("1. Ingresar Kilómetros\n");
 			printf("2. Ingresar Precios de Vuelos\n");

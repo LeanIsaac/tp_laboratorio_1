@@ -44,12 +44,20 @@ float caseDosAA();
 
 
 /**
- * @brief esta funcion imprime un mensaje y pide el ingreso de un flotante.
+ * @brief esta funcion imprime un mensaje y pide el ingreso de un un dato (flotante).
  *
- * @return devuelva el dato flotante
+ * @return devuelva el dato (flotante)
  */
 float caseDosLatam();
 
+/**
+ * @brief esta funcion realiza descuento y aumento
+ *
+ * @param costo seremplaza por el precio de la aerolineas
+ * @param porcentaje ingresamos cuanto el porcentaje de descuento o aumento
+ * @return devuelve el resultado de la operación
+ */
+float calcularCostos (float costo, float porcentaje);
 
 #endif /* FUNCIONES_H_ */
 

@@ -46,3 +46,16 @@ float caseDosLatam(){
 
 	return  precioLatam;
 }
+
+
+
+float calcularCostos (float costo, float porcentaje){
+	float total;
+
+	total=(costo+(costo*porcentaje)); //ej. 1200 + 1200 x -0,1 da 1080
+
+	return total;
+}
+
+
+
