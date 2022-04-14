@@ -9,9 +9,9 @@
 #define MENU_H_
 
 /**
- * @brief esta función es para crear el menú de opciones
+ * @brief esta función imprime 6 opciones.
  *
- * @return devuelve el la opcion elegida, para poder usarlo en el switch
+ * @return devuelve un entero (la opcion elegida para usarlo luego en el switch)
  */
 int menu();
 

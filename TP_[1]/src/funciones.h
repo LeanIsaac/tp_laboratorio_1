@@ -9,25 +9,6 @@
 #define FUNCIONES_H_
 
 /**
- * @brief esta funcion valida un parametro, en al caso de que no tengan valor imprime un mensaje informandolo.
- *
- * @param verifica si el parametro actual tiene algun valor
- */
-void validar(int);
-
-
-
-/**
- * @brief esta funcion valida dos parametros, en al caso de que no tengan valor imprime un mensaje informandolo.
- *
- * @param valida si tiene algun valor
- * @param valida si ese parametro tiene algun valor
- */
-void validar2(int ,int);
-
-
-
-/**
  * @brief pide que igresemos los kms, y lo retorna
  *
  * @return retorna los kolometros ingresador
@@ -50,6 +31,7 @@ float caseDosAA();
  */
 float caseDosLatam();
 
+
 /**
  * @brief esta funcion realiza descuento y aumento
  *
@@ -58,6 +40,41 @@ float caseDosLatam();
  * @return devuelve el resultado de la operación
  */
 float calcularCostos (float costo, float porcentaje);
+
+
+/**
+ * @brief esta funcion es para converit el costo del vuelo a bitcoin
+ *
+ * @param se ingresa la variable (cargada)
+ * @return retorna el valor en bitcoin
+ */
+float bitcoin(float);
+
+
+/**
+ * @brief esta funcion divide el precio por los kilometros ingresados, para sacar el precio unitario.
+ *
+ * @param precio , ingresamos el precio
+ * @param kms , ingresamos los kilometros
+ * @return retorna el resultado
+ */
+float precioUnitario ( float precio, float kms);
+
+
+/**
+ * @brief esta funcion es para sacar la diferencia entre dos parametros (el resto)
+ *
+ * @param precio1 ingreso el primer precio
+ * @param precio2 ingreso el segundo precio
+ * @return retorna el resultado de la operacion
+ */
+float diferencia (float precio1, float precio2);
+
+/**
+ * @brief imprime lo que que tipo de calculos va hacer la siguiente opcion;
+ *
+ */
+void casoTreImprimir (void);
 
 #endif /* FUNCIONES_H_ */
 
