@@ -34,13 +34,15 @@ int main(){
 	float km;
 	float latam;
 
+	int cargaForzada = 1;
+
 	do{
 		opciones = menu();
 		switch(opciones){
 
 			case 1: //Ingreso los kilómetros
 				kms = ingreseKms();
-				opciones = menu();
+				cargaForzada = 0;
 				break;
 
 			case 2: //Ingresar Precio de Vuelos
@@ -51,19 +53,19 @@ int main(){
 					precioAerolineas = caseDosAA();
 					precioLatam = caseDosLatam();
 				}
-				opciones = menu();
+				cargaForzada = 0;
 				break;
 
 			case 3: //Calcular todos los costos
 
 				if(precioAerolineas > 0 && precioLatam > 0){
 					casoTreImprimir();
-					debitoAA =  calcularCostos(precioAerolineas, -0.1);
+					debitoAA =  calcularCostos(precioAerolineas, -0.10);
 					creditoAA = calcularCostos(precioAerolineas, 0.25);
 					btcAA = bitcoin(precioAerolineas);
 					PrecioUniAA  = precioUnitario(precioAerolineas, kms);
 
-					debitoLatam = calcularCostos(precioLatam, -0.1);
+					debitoLatam = calcularCostos(precioLatam, -0.10);
 					creditoLatam = calcularCostos(precioLatam, 0.25);
 					btcLatam = bitcoin(precioLatam);
 					precioUniLat = precioUnitario(precioLatam, kms);
@@ -73,7 +75,7 @@ int main(){
 				else{
 					printf("ERROR NO HAY DATOS CARGADOS\n");
 				}
-				opciones = menu();
+				cargaForzada = 0;
 				break;
 
 			case 4: //Informar Resultados
@@ -92,43 +94,46 @@ int main(){
 					printf("\nLa diferencia de precio es: %.2f", diferenciaPrecio);
 				}
 				else{
-					printf("ERROR NO HAY DATOS CARGADOS\n");
+					printf("No hay informacion que mostrar, primero ingrese los datos\n");
 				}
-				opciones = menu();
+				cargaForzada = 0;
 				break;
 
 			case 5: //Carga forzada de datos
-				km = 7090;
-				aerolineasArgentinas = 162965;
-				latam = 159339;
+				if(cargaForzada == 1){
+					km = 7090;
+					aerolineasArgentinas = 162965;
+					latam = 159339;
 
-				debitoAA =  calcularCostos(aerolineasArgentinas, -0.1);
-				creditoAA = calcularCostos(aerolineasArgentinas, 0.25);
-				btcAA = bitcoin(aerolineasArgentinas);
-				PrecioUniAA  = precioUnitario(aerolineasArgentinas, km);
+					debitoAA =  calcularCostos(aerolineasArgentinas, -0.10);
+					creditoAA = calcularCostos(aerolineasArgentinas, 0.25);
+					btcAA = bitcoin(aerolineasArgentinas);
+					PrecioUniAA  = precioUnitario(aerolineasArgentinas, km);
 
-				debitoLatam = calcularCostos(latam, -0.1);
-				creditoLatam = calcularCostos(latam, 0.25);
-				btcLatam = bitcoin(latam);
-				precioUniLat = precioUnitario(latam, km);
+					debitoLatam = calcularCostos(latam, -0.10);
+					creditoLatam = calcularCostos(latam, 0.25);
+					btcLatam = bitcoin(latam);
+					precioUniLat = precioUnitario(latam, km);
 
-				diferenciaPrecio = diferencia(aerolineasArgentinas, latam);
-				printf("══════> CARGA FORZADA <══════\n");
-				printf("Kilometros ingresados: %.2f km\n\n",km);
-				printf("Precio Aerolineas: %.2f\n",aerolineasArgentinas);
-				printf("a) Precio con tarjeta de débito: %.2f\n",debitoAA);
-				printf("b) Precio con tarjeta de crédito: %.2f\n",creditoAA);
-				printf("c) Precio pagando con bitcoin : %f BTC\n",btcAA);
-				printf("d) Mostrar precio unitario %f\n\n",PrecioUniAA);
+					diferenciaPrecio = diferencia(aerolineasArgentinas, latam);
+					printf("══════> CARGA FORZADA <══════\n");
+					printf("Kilometros ingresados: %.2f km\n\n",km);
+					printf("Precio Aerolineas: %.2f\n",aerolineasArgentinas);
+					printf("a) Precio con tarjeta de débito: %.2f\n",debitoAA);
+					printf("b) Precio con tarjeta de crédito: %.2f\n",creditoAA);
+					printf("c) Precio pagando con bitcoin : %f BTC\n",btcAA);
+					printf("d) Mostrar precio unitario %f\n\n",PrecioUniAA);
 
-				printf("Precio Latam: %.2f\n",latam);
-				printf("a) Precio con tarjeta de débito: %.2f\n",debitoLatam);
-				printf("b) Precio con tarjeta de crédito: %.2f\n",creditoLatam);
-				printf("c) Precio pagando con bitcoin : %f BTC\n",btcLatam);
-				printf("d) Mostrar precio unitario %f\n",precioUniLat);
-				printf("\nLa diferencia de precio es: %.2f", diferenciaPrecio);
-
-				opciones = menu();
+					printf("Precio Latam: %.2f\n",latam);
+					printf("a) Precio con tarjeta de débito: %.2f\n",debitoLatam);
+					printf("b) Precio con tarjeta de crédito: %.2f\n",creditoLatam);
+					printf("c) Precio pagando con bitcoin : %f BTC\n",btcLatam);
+					printf("d) Mostrar precio unitario: %f\n",precioUniLat);
+					printf("\nLa diferencia de precio es: %.2f", diferenciaPrecio);
+				}
+				else{
+					printf("No es posible realizar la carga forzada, Ya hay datos ingresados");
+				}
 				break;
 
 			case 6: //Salir del menú

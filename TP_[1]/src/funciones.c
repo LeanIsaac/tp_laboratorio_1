@@ -54,10 +54,11 @@ float caseDosLatam(){
 /******************************************************/
 
 float calcularCostos (float costo, float porcentaje){
+	float mult;
 	float total;
 
-	total=(costo+(costo*porcentaje)); //ej. 1200 + 1200 x -0,1 da 1080
-
+	mult = costo * porcentaje;
+	total = mult + costo;
 	return total;
 }
 
