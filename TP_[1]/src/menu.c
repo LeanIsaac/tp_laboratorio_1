@@ -9,7 +9,6 @@
 #include <ctype.h>
 
 int menu(){
-
 	int opciones;
 
 		do{

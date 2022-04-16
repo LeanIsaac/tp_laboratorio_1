@@ -9,7 +9,7 @@
 #define MENU_H_
 
 /**
- * @brief esta función imprime 6 opciones.
+ * @brief esta función menu, imprime 6 opciones, una para caso del switch.
  *
  * @return devuelve un entero (la opcion elegida para usarlo luego en el switch)
  */
