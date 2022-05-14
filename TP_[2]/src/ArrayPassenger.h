@@ -122,13 +122,22 @@ int sortPassengersByCode(passenger* list, int len, int order);
 
 void cargaPasajeros(passenger lista[], int tam, int *id);
 
+
 void mostrarTipoPasajero(eTypePassenger list[], int tam);
 
 
 void mostrarCodigoVuelo(eFlyCode list[], int tam);
 
+
 void listar(passenger lista[], int tam);
 
+
 int alta(passenger lista[], int len, int *id);
+
+
+void modificar(passenger lista[], int tam);
+
+
+void mostrarUnPasajero(passenger lista);
 
 #endif /* ARRAYPASSENGER_H_ */
