@@ -18,6 +18,7 @@ int main(void) {
 	int opcion;
 	int id=100;
 
+
 	passenger passenger[CANT];
 
 	initPassengers(passenger, CANT);
@@ -39,11 +40,11 @@ int main(void) {
 					break;
 				//INFORMAR
 				case 4:
-					listar(passenger, CANT);
+					//listar(passenger, CANT);
 					break;
 				//HARCODEO
 				case 5:
-					printPassenger(passenger, CANT);
+					//printPassenger(passenger, CANT);
 					break;
 			}
 

@@ -77,6 +77,21 @@ int addPassenger(passenger* list, int len, int id, char name[],char lastName[],f
 
 
 //////////////////////////////////////////////////////////////////
+/*
+int alta(passenger lista[], int len, int *id){
+	int indice;
+	int retorno = -1;
+
+	if(lista != NULL && len > 0){
+		indice = buscarEspacioLibre(lista, len);
+		if(indice != -1){
+			lista[indice] = cargaPasajeros(lista, len, &id);
+			lista[indice].id = id;
+			retorno = 0;
+		}
+	}
+	return retorno;
+}*/
 
 void cargaPasajeros(passenger lista[], int tam, int *id){
 	char string[51];
@@ -89,40 +104,27 @@ void cargaPasajeros(passenger lista[], int tam, int *id){
 
 	codigo = *id;
 
-	getString(string, "\nIngrese el nombre del pasajero: ", 51);
-
+	getString(string, "\nIngrese el nombre del pasajero --> ", 51);
 	strcpy(name, string);
-
-	printf("\nNombre ingresado: [ %s ]\n",name);
-
-	getString(string, "\nIngrese el Apellido del pasajero: ", 51);
-
+	printf("\nEl Nombre ingresado es: [ %s ]\n",name);
+	getString(string, "\nIngrese el Apellido del pasajero --> ", 51);
 	strcpy(lastName, string);
-
-	printf("\nApellido ingresado: [ %s ]\n",lastName);
-
-	price = get_Float("\nIngrese el precio del vuelo: ", "Vuelava ingresar el precio: ", 0, 999999);
-
-	printf("\nPrecio ingresado: [ %.2f $]\n",price);
-
+	printf("\nEl Apellido ingresado es: [ %s ]\n",lastName);
+	price = get_Float("\nIngrese el precio del vuelo --> ", "Vuelava ingresar el precio: ", 0, 999999);
+	printf("\nEl Precio ingresado es: [ %.2f $]\n",price);
 	printf("\nTIPO DE PASAJERO\nID\tCLASE");
 	mostrarTipoPasajero(TypePassenger, 3);
-
-	typePassenger = get_Int("\n\nIngrese el tipo de clase: ", "Vuela a ingresar la clase de vuelo: ", 3, 1);
-
-	printf("\nTipo de pasajero ingresado: [ %d ]\n",typePassenger);
-
+	typePassenger = get_Int("\n\nIngrese el tipo de clase --> ", "Vuela a ingresar la clase de vuelo: ", 3, 1);
+	printf("\nEl Tipo de Pasajero ingresado es: [ %d ]\n",typePassenger);
 	printf("\nCODIGOS DE VUELOS");
 	mostrarCodigoVuelo(flyCode, 3);
-
-	codigoAux = get_Int("\nIngrese el ID de su codigo de Vuelo: ", "Vuelva a intentarlo: ", 3, 1);
+	codigoAux = get_Int("\nIngrese el ID de su codigo de Vuelo --> ", "Vuelva a intentarlo: ", 3, 1);
 
 	for(i=0;i<3;i++){
 		if(flyCode[i].idFlyCode ==  codigoAux){
 			codigoAux = i;
 		}
 	}
-
 	strcpy(flyCodigo, flyCode[codigoAux].flyCode);
 
 	addPassenger(lista, tam, codigo, name, lastName, price, typePassenger, flyCodigo);
@@ -130,16 +132,19 @@ void cargaPasajeros(passenger lista[], int tam, int *id){
 	*id = *id +1;
 
 }
-
 ///////////////////////////////////////////////////////////////////////////////////////
 
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
 void mostrarTipoPasajero(eTypePassenger list[], int tam){
 	int j;
 	for(j=0;j<tam;j++){
 		printf("\n[ %d ] - [ %s ]",list[j].typePassenger ,list[j].descrpicion);
 	}
 }
-
+///////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
 
 void mostrarCodigoVuelo(eFlyCode list[], int tam){
@@ -165,10 +170,15 @@ void modificar(passenger lista[], int tam){
 	int i;
 	int opcionModificar;
 	int auxCodigo;
+	char nombre[51];
+	char apellido[51];
+	int codigoAux;
+	//char flyCodigo[10];
+
 
 	printPassenger(lista, tam);
 
-	auxCodigo =get_Int("Codigo a Modificar: ", "Vuelva a ingresar el codigo: ", 1000000, 1);
+	auxCodigo =get_Int("\nCodigo a Modificar: ", "Vuelva a ingresar el codigo: ", 1000000, 1);
 
 	for( i=0; i<tam; i++ ){
 		if( auxCodigo == lista[i].id && lista[i].isEmpty == OCUPADO ){
@@ -177,21 +187,37 @@ void modificar(passenger lista[], int tam){
 	}
 
 	do{
-		opcionModificar = menu("\nMODIFICAR \n1. NOMBRE\n2. APELLIDO \n3. PRECIO\n4. TIPO PASAJERO\n5. CODIGO VUELO \n6. SALIR\n");
+		opcionModificar = menu("\n\nMODIFICAR \n1. NOMBRE\n2. APELLIDO \n3. PRECIO\n4. TIPO PASAJERO\n5. CODIGO VUELO \n6. SALIR\n");
 
 			switch(opcionModificar){
 
 				case 1:
+					getString(nombre, "\n\nIngrese Nombre a modificar: ", 51);
+					strcpy(lista[i].name, nombre);
 					break;
 				case 2:
+					getString(apellido, "\n\nIngrese Apellido a modificar: ", 51);
+					strcpy(lista[i].name, apellido);
 					break;
 				case 3:
+					lista[i].price = get_Float("\n\nIngrese precio a Modificar: ", "Error, ingrese precio; ", 0, 9999999);
 					break;
 				case 4:
+					mostrarTipoPasajero(TypePassenger, 3);
+					lista[i].typePassenger = getInt("\n\nIngrese Tipo de Pasajero a Modificar: ");
 					break;
 				case 5:
+					mostrarCodigoVuelo(flyCode, 3);
+					codigoAux = getInt("\n\nIngrese el Id del codo de vuelo a modificar: ");
+					for(i=0;i<3;i++){
+							if(flyCode[i].idFlyCode ==  codigoAux){
+								codigoAux = i;
+							}
+						}
+						strcpy(lista[i].flyCode, flyCode[codigoAux].flyCode);
 					break;
 				case 6:
+					printf("\n\nSaliendo...\n\n");
 					break;
 			}
 
@@ -199,7 +225,7 @@ void modificar(passenger lista[], int tam){
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-/*
+
 int removePassenger(passenger* list, int len, int id){
 	int i, auxCodigo;
 	char confirmar;
@@ -232,7 +258,7 @@ int removePassenger(passenger* list, int len, int id){
 
 		return retorno;
 }
-*/
+
 ///////////////////////////////////////////////////////////////////////////////////////
 
 //imprime pasajeros en forma encolumnada
@@ -244,12 +270,12 @@ int printPassenger(passenger* list, int length){
 		rto=0;
 		for(i=0;i<length;i++){
 			if(list[i].isEmpty == OCUPADO){
-				printf("ID del Pasajero \t|| ID %d \n",list[i].id);
-				printf("Nombre: \t\t|| %s \n",list[i].name);
-				printf("Apellido: \t\t|| %s \n",list[i].lastName);
-				printf("Precio del viaje: \t|| $%.2f \n",list[i].price);
-				printf("Tipo de pasajero: \t|| %d \n",list[i].typePassenger);
-				printf("Codigo de vuelo: \t|| %s \n\n",list[i].flyCode);
+				printf("\nID DEL PASAJERO\t\t|| ID %d \n",list[i].id);
+				printf("NOMBRE:\t\t\t|| %s \n",list[i].name);
+				printf("APELLIDO:\t\t|| %s \n",list[i].lastName);
+				printf("PRECIO DEL VUELO:\t|| %.2f$ \n",list[i].price);
+				printf("TIPO DE PASAJERO:\t|| %d \n",list[i].typePassenger);
+				printf("CODIGO DEL VUELO:\t|| %s \n\n",list[i].flyCode);
 			}
 		}
 	}
@@ -260,12 +286,12 @@ int printPassenger(passenger* list, int length){
 ///////////////////////////////////////////////////////////////////////////////////////
 
 void mostrarUnPasajero(passenger lista){
-	printf("ID del Pasajero \t|| ID %d \n",lista.id);
-	printf("Nombre: \t\t|| %s \n",lista.name);
-	printf("Apellido: \t\t|| %s \n",lista.lastName);
-	printf("Precio del viaje: \t|| $%.2f \n",lista.price);
-	printf("Tipo de pasajero: \t|| %d \n",lista.typePassenger);
-	printf("Codigo de vuelo: \t|| %s \n\n",lista.flyCode);
+	printf("ID DEL PASAJERO\t|| ID %d \n",lista.id);
+	printf("NOMBRE:\t\t|| %s \n",lista.name);
+	printf("APELLIDO:\t\t|| %s \n",lista.lastName);
+	printf("PRECIO DEL VUELO:\t|| %.2f$ \n",lista.price);
+	printf("TIPO DE PASAJERO:\t|| %d \n",lista.typePassenger);
+	printf("CODIGO DEL VUELO:\t|| %s \n\n",lista.flyCode);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////

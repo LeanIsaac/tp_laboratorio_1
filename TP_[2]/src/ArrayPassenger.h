@@ -119,25 +119,72 @@ int printPassenger(passenger* list, int length);
  */
 int sortPassengersByCode(passenger* list, int len, int order);
 
-
+/**
+ * @brief carga pasajeros a la lista
+ *
+ * @param lista
+ * @param tam
+ * @param id
+ */
 void cargaPasajeros(passenger lista[], int tam, int *id);
 
-
+/**
+ * @brief imprime tips de pasajeros
+ *
+ * @param list
+ * @param tam
+ */
 void mostrarTipoPasajero(eTypePassenger list[], int tam);
 
-
+/**
+ * @brief imprime codigos de vuelo harcodeados
+ *
+ * @param list
+ * @param tam
+ */
 void mostrarCodigoVuelo(eFlyCode list[], int tam);
 
-
+/**
+ * @brief
+ *
+ * @param lista
+ * @param tam
+ */
 void listar(passenger lista[], int tam);
 
-
+/**
+ * @brief
+ *
+ * @param lista
+ * @param len
+ * @param id
+ * @return
+ */
 int alta(passenger lista[], int len, int *id);
 
-
+/**
+ * @brief modifica pasajeros
+ *
+ * @param lista
+ * @param tam
+ */
 void modificar(passenger lista[], int tam);
 
-
+/**
+ * @brief
+ *
+ * @param lista
+ */
 void mostrarUnPasajero(passenger lista);
+
+/**
+ * @brief devuelve el indice libre
+ *
+ * @param list
+ * @param len tamaño del array
+ * @return int
+ */
+int buscarEspacioLibre(passenger* list, int len);
+
 
 #endif /* ARRAYPASSENGER_H_ */
